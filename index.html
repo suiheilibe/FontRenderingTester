@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>フォントチェッカー</title>
+</head>
+
+<body>
+  <script src="FontChecker.js"></script>
+  <div>
+    <input type="text" name="Text" value="般若波羅蜜多心経">
+    <input type="text" name="FontName" value="ＭＳ ゴシック">
+    <input type="text" name="FontSizePixel" value="20">px
+    <input type="text" name="Factor" value="2">倍
+    <button id="button01">表示</button>
+  </div>
+  <div id="container"></div>
+  <script>
+    var fc = new FontChecker("container", 640, 480);
+    var btn = document.getElementById("button01");
+    btn.addEventListener("click", function(e) {
+      var text = document.getElementsByName("Text")[0].value;
+      var fontName = document.getElementsByName("FontName")[0].value;
+      var fontSizePixel = document.getElementsByName("FontSizePixel")[0].value;
+      var factor = document.getElementsByName("Factor")[0].value;
+      fc.clear();
+      fc.draw(
+        text, {
+          fontFamily: fontName,
+          fontSize: "" + fontSizePixel + "px"
+        }, {
+          factor: factor
+        }
+      );
+    }, true);
+  </script>
+</body>
+
+</html>
